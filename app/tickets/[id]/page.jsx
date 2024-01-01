@@ -1,4 +1,4 @@
-export const dynamicParams = false
+export const dynamicParams = true;
 export async function generateStaticParams () {
     const response = await fetch('http://localhost:4000/tickets');
     const tickets = await response.json();
@@ -32,7 +32,7 @@ export default async function TicketDetails(params) {
                 <h3>{ticket.title}</h3>
                 <small>Created by {ticket.user_email}</small>
                 <p>{ticket.body}</p>
-                <div className= {'pill ${ticket.priority} '}>
+                <div className={`pill ${ticket.priority}`}>
                     {ticket.priority} priority
                 </div>
             </div>

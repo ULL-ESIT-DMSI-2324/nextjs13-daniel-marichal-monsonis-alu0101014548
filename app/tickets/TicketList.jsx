@@ -6,8 +6,8 @@ async function getTickets() {
                 revalidate: 0, // refresh every second
         }
     });
-    const data = await response.json();
-    return data;
+    
+    return response.json();
 }
 
 export default async function TicketList() {
@@ -20,7 +20,7 @@ export default async function TicketList() {
             <Link href={`/tickets/${ticket.id}`}>
                     <h3>{ticket.title}</h3>
                     <p>{ticket.body.slice(0, 200)}...</p>
-                    <div className= {'pill ${ticket.priority} '}>
+                    <div className= {`pill ${ticket.priority} `}>
                         {ticket.priority} priority
                     </div>
                 </Link>
