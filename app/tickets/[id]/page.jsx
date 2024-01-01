@@ -8,7 +8,7 @@ export async function generateStaticParams () {
         }
     }));
 }
-import { PageNotFoundError } from 'next/dist/shared/lib/utils';
+import { notFound } from "next/navigation"
 import React from 'react'
 async function getTicket(id) {
     const response = await fetch('http://localhost:4000/tickets' + id, {
