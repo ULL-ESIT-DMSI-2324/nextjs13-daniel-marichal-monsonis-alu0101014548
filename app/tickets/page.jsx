@@ -6,9 +6,9 @@ export default function Tickets() {
     <main>
       <nav>
         <div>
-          <h2>
+          <h2>Tickets</h2>
             <p><small>Currently open tickets.</small></p>
-          </h2>
+          
         </div>
       </nav>
 
