@@ -1,3 +1,14 @@
+export const dynamicParams = false
+export async function generateStaticParams () {
+    const response = await fetch('http://localhost:4000/tickets');
+    const tickets = await response.json();
+    return tickets.map(ticket => ({
+        params: {
+            id: ticket.id.toString()
+        }
+    }));
+}
+import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import React from 'react'
 async function getTicket(id) {
     const response = await fetch('http://localhost:4000/tickets' + id, {
@@ -5,6 +16,9 @@ async function getTicket(id) {
                 revalidate: 60, 
         }
     });
+    if (!response.ok) {
+        notFound();
+    }
     return response.json();
 }
 export default async function TicketDetails(params) {
