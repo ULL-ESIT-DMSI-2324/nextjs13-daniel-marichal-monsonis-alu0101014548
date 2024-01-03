@@ -1,38 +1,72 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13208918)
-## Next.js Master Class
-This repo contains all the course files for the Next.js Master Class on Net Ninja Pro. There is a branch for every lesson. Select the lesson you need from the branch dropdown.
+# Next.js 13 Crash Course Tutorial #10: Loading UI & Suspense
 
-Visit [Net Ninja Pro](https://netninja.dev) to view this course and many more.
 
-## Getting Started with the Project
 
-First, run the development server:
+## Loading UI
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1. Concepto de Loading UI
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Una Loading UI se muestra cuando se está cargando contenido o datos, proporcionando una retroalimentación visual al usuario de que algo está sucediendo.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 2. Implementación Básica
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Para una simple Loading UI, puedes usar el estado en un componente para mostrar un indicador de carga mientras se están cargando los datos.
 
-## Learn More
+- **Ejemplo de Implementación**:
 
-To learn more about Next.js, take a look at the following resources:
+  ```jsx
+  import { useState, useEffect } from 'react';
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  function DataLoader() {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    useEffect(() => {
+      fetchData()
+        .then(data => {
+          setData(data);
+          setLoading(false);
+        });
+    }, []);
 
-## Deploy on Vercel
+    if (loading) {
+      return <p>Loading...</p>;
+    }
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    return <div>{/* Renderizar datos aquí */}</div>;
+  }
+  ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Suspense en Next.js
+
+### 1. ¿Qué es Suspense?
+
+Suspense es una característica de React que te permite suspender el renderizado de tu componente hasta que ciertas condiciones sean cumplidas, como la carga de datos.
+
+### 2. Uso de Suspense
+
+Next.js 13 aún no soporta Suspense para la renderización del lado del servidor (SSR), pero puedes usarlo en el cliente.
+
+- **Ejemplo de Uso de Suspense para Datos**:
+
+  ```jsx
+  import { Suspense } from 'react';
+
+  function MyComponent() {
+    return (
+      <Suspense fallback={<p>Loading...</p>}>
+        <DataComponent />
+      </Suspense>
+    );
+  }
+
+  function DataComponent() {
+    // Lógica para cargar datos
+  }
+  ```
+
+### 3. Consideraciones
+
+- **Uso en el Cliente**: Asegúrate de usar Suspense en partes de tu aplicación que se renderizan en el cliente.
+- **Fallback**: Proporciona un componente `fallback` para mostrar mientras los datos o componentes están cargando.
+
