@@ -1,38 +1,66 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13208918)
-## Next.js Master Class
-This repo contains all the course files for the Next.js Master Class on Net Ninja Pro. There is a branch for every lesson. Select the lesson you need from the branch dropdown.
+# Next.js 13 Crash Course Tutorial #4: Layouts & Links
 
-Visit [Net Ninja Pro](https://netninja.dev) to view this course and many more.
+## Introducción
 
-## Getting Started with the Project
+En este cuarto tutorial de nuestra serie sobre Next.js 13, nos enfocaremos en cómo trabajar eficientemente con **Layouts & Links**. Estos elementos son fundamentales para estructurar tu aplicación y facilitar la navegación. Aprenderás a crear layouts reutilizables y a manejar enlaces de manera efectiva.
 
-First, run the development server:
+## Conceptos Clave
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1. Layouts en Next.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Un layout es una plantilla que se utiliza para mantener una estructura consistente en varias páginas de tu aplicación. Esto es particularmente útil para elementos como cabeceras, pies de página y barras laterales que son comunes a través de tu sitio.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 2. Links y Navegación
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Next.js proporciona un componente `<Link>` para gestionar la navegación dentro de tu aplicación. Esto permite una transición fluida entre páginas sin recargar todo el sitio.
 
-## Learn More
+## Implementación Práctica
 
-To learn more about Next.js, take a look at the following resources:
+### Creando un Layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Crear un Componente de Layout**: Crea un archivo `Layout.jsx` en tu directorio de componentes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```jsx
+   // components/Layout.js
+   export default function Layout({ children }) {
+     return (
+       <div>
+         <header>Encabezado común</header>
+         <main>{children}</main>
+         <footer>Pie de página común</footer>
+       </div>
+     );
+   }
+   ```
 
-## Deploy on Vercel
+2. **Uso del Layout en Páginas**: Envuelve las páginas de tu aplicación con el componente de Layout.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```jsx
+   // pages/index.js
+   import Layout from '../components/Layout';
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   export default function Home() {
+     return (
+       <Layout>
+         <h1>Bienvenido a mi sitio web</h1>
+         {/* Contenido de la página */}
+       </Layout>
+     );
+   }
+   ```
+
+### Manejo de Links
+
+1. **Importar el Componente `<Link>`**: Utiliza `<Link>` para la navegación entre páginas.
+
+   ```jsx
+   import Link from 'next/link';
+   ```
+
+2. **Navegación con `<Link>`**: Envuelve tus etiquetas `<a>` con `<Link>` para habilitar una navegación rápida y sin recargar.
+
+   ```jsx
+   // Ejemplo en un componente
+   <Link href="/about"><a>Acerca de Nosotros</a></Link>
+   ```
+
