@@ -1,38 +1,86 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13208918)
-## Next.js Master Class
-This repo contains all the course files for the Next.js Master Class on Net Ninja Pro. There is a branch for every lesson. Select the lesson you need from the branch dropdown.
+# Next.js 13 Crash Course Tutorial #5: Styles, Fonts & Images
 
-Visit [Net Ninja Pro](https://netninja.dev) to view this course and many more.
+## Introducción
 
-## Getting Started with the Project
+Bienvenidos al Tutorial #5 de nuestro Crash Course de Next.js 13, centrado en **Styles, Fonts & Images**. En este tutorial, aprenderás a incorporar estilos, usar Google Fonts y manejar imágenes de manera efectiva en Next.js 13. Estos elementos son cruciales para mejorar la apariencia y el rendimiento de tu aplicación web.
 
-First, run the development server:
+## Estilos en Next.js
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1. CSS y Sass
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next.js permite importar hojas de estilo CSS y Sass directamente en tus componentes de JavaScript.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Uso de CSS**: Puedes crear un archivo `.css` y luego importarlo en tu componente.
+- **Uso de Sass**: Similar al CSS, pero con archivos `.scss` o `.sass`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 2. CSS Modules
 
-## Learn More
+Next.js admite CSS Modules por defecto, lo que te permite tener estilos locales que solo afectan a tu componente.
 
-To learn more about Next.js, take a look at the following resources:
+- **Archivo CSS Module**: Nómbralo como `[nombre].module.css`.
+- **Importar Estilos**: Importa tu archivo CSS Module en tu componente y úsalo como un objeto.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```jsx
+  // styles/Button.module.css
+  .button {
+    background-color: blue;
+    color: white;
+  }
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  // Componente que utiliza Button.module.css
+  import styles from '../styles/Button.module.css';
 
-## Deploy on Vercel
+  function Button() {
+    return <button className={styles.button}>Click me</button>;
+  }
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Google Fonts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Incorporar Google Fonts
+
+1. **Selecciona la Fuente en Google Fonts**: Visita [Google Fonts](https://fonts.google.com/) y elige una fuente.
+2. **Incorpora la Fuente en tu Aplicación**:
+   - **Método 1**: Enlaza la fuente en tu archivo HTML o en el componente Head de Next.js.
+   - **Método 2**: Utiliza `@import` en tus hojas de estilo CSS.
+
+   ```jsx
+   // pages/_document.js o tu componente Head
+   <Head>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   </Head>
+   ```
+
+   ```css
+   /* Método con @import en CSS */
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+   body {
+     font-family: 'Roboto', sans-serif;
+   }
+   ```
+
+## Manejo de Imágenes
+
+### Uso de la Etiqueta `<Image>` de Next.js
+
+Next.js proporciona un componente `<Image>` para optimizar automáticamente las imágenes.
+
+- **Importar el Componente `<Image>`**:
+  
+  ```jsx
+  import Image from 'next/image';
+  ```
+
+- **Usar el Componente `<Image>`**:
+  
+  ```jsx
+  // Ejemplo de uso de Image
+  <Image
+    src="/path/to/your/image.jpg" // Ruta de la imagen
+    alt="Descripción"
+    width={500}  // Ancho definido
+    height={300} // Alto definido
+  />
+  ```
+
