@@ -1,38 +1,17 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13208918)
-## Next.js Master Class
-This repo contains all the course files for the Next.js Master Class on Net Ninja Pro. There is a branch for every lesson. Select the lesson you need from the branch dropdown.
+# Next.js 13 Crash Course Tutorial #3: Pages & Routes
 
-Visit [Net Ninja Pro](https://netninja.dev) to view this course and many more.
+## Introducción
 
-## Getting Started with the Project
+Bienvenidos al Tutorial #3 del Crash Course de Next.js 13, enfocado en **Pages & Routes**. Next.js, conocido por su eficiencia y facilidad de uso en aplicaciones React, introduce una forma única y poderosa de manejar páginas y rutas. Este tutorial te guiará a través de los conceptos clave y las prácticas recomendadas.
 
-First, run the development server:
+## Conceptos Básicos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1. Estructura de Directorios
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Páginas**: En Next.js, cada archivo `.js`, `.jsx`, `.ts`, o `.tsx` en el directorio `pages` se convierte automáticamente en una ruta accesible.
+- **Index Page**: El archivo `pages/index.jsx` corresponde a la ruta raíz (`/`).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 2. Rutas Dinámicas
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Parámetros**: Para crear rutas dinámicas, puedes usar corchetes (`[ ]`) para envolver los nombres de los parámetros en el nombre del archivo. Por ejemplo, `pages/posts/[id].js` se traduce en rutas como `/posts/1`, `/posts/2`, etc.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
