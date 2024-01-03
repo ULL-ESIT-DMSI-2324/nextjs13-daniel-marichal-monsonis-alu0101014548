@@ -1,38 +1,39 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13208918)
-## Next.js Master Class
-This repo contains all the course files for the Next.js Master Class on Net Ninja Pro. There is a branch for every lesson. Select the lesson you need from the branch dropdown.
+# Next.js 13 Crash Course Tutorial #7: Dynamic Segments (Params)
 
-Visit [Net Ninja Pro](https://netninja.dev) to view this course and many more.
+## Introducción
 
-## Getting Started with the Project
+Bienvenido al Tutorial #7 de nuestro Crash Course de Next.js 13, dedicado a **Dynamic Segments (Params)**. En este tutorial, aprenderás cómo manejar segmentos dinámicos en las rutas, una característica esencial para crear páginas que dependen de datos variables, como identificadores únicos de usuarios, productos, artículos de blog, etc.
 
-First, run the development server:
+## Conceptos Básicos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1. ¿Qué son los Segmentos Dinámicos?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Los segmentos dinámicos son partes de la URL que pueden cambiar y se utilizan para pasar datos a una página. En Next.js, estos se manejan mediante archivos y carpetas con nombres especiales en el directorio `pages`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 2. Creación de Rutas Dinámicas
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Para crear una ruta dinámica, debes usar corchetes (`[]`) alrededor del nombre del segmento en el nombre del archivo o carpeta. Por ejemplo, `[id].js` o `[username]`.
 
-## Learn More
+## Implementación Práctica
 
-To learn more about Next.js, take a look at the following resources:
+### Creando una Página con un Segmento Dinámico
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Crear un Archivo para la Ruta Dinámica**: Por ejemplo, para un blog, crea un archivo `pages/posts/[id].js`.
+2. **Acceso a los Parámetros Dinámicos**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   - Utiliza el hook `useRouter` de Next.js para acceder a los parámetros.
 
-## Deploy on Vercel
+     ```jsx
+     import { useRouter } from 'next/router';
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+     function Post() {
+       const router = useRouter();
+       const { id } = router.query; // Accede al parámetro 'id'
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+       return <div>Post ID: {id}</div>;
+     }
+
+     export default Post;
+     ```
+
+
