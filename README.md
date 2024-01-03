@@ -1,38 +1,48 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13208918)
-## Next.js Master Class
-This repo contains all the course files for the Next.js Master Class on Net Ninja Pro. There is a branch for every lesson. Select the lesson you need from the branch dropdown.
+# Next.js 13 Crash Course Tutorial #9: Custom 404 Page
 
-Visit [Net Ninja Pro](https://netninja.dev) to view this course and many more.
+## Introducción
 
-## Getting Started with the Project
+Bienvenidos al Tutorial #9 de nuestro Crash Course de Next.js 13, centrado en la creación de una **Custom 404 Page**. Una página 404 personalizada es esencial para mejorar la experiencia del usuario y mantener la coherencia del diseño en tu aplicación web cuando se encuentra con una ruta no existente.
 
-First, run the development server:
+## Conceptos Clave
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### ¿Qué es una Página 404?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Una página 404 es una página de error que se muestra cuando el servidor no puede encontrar la página solicitada. En Next.js, puedes personalizar esta página para que coincida con el estilo de tu aplicación y proporcionar una mejor guía a tus usuarios.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Creación de una Página 404 Personalizada
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 1. Crear un Archivo 404
 
-## Learn More
+Next.js automáticamente reconoce un archivo especial llamado `404.js` en tu directorio `pages` como tu página de error 404 personalizada.
 
-To learn more about Next.js, take a look at the following resources:
+- **Estructura de Archivos**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```
+  pages/
+    404.js  // Tu página 404 personalizada
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 2. Diseño de la Página 404
 
-## Deploy on Vercel
+Diseña tu página 404 como cualquier otra página en Next.js. Puedes incluir estilos, imágenes, enlaces, etc.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Ejemplo de Página 404**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  ```jsx
+  // pages/404.js
+  export default function Custom404() {
+    return (
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <h1>404 - Página No Encontrada</h1>
+        <p>Oops! La página que buscas no existe.</p>
+        <a href="/">Volver al inicio</a>
+      </div>
+    );
+  }
+  ```
+
+### 3. Incluir Navegación
+
+Es útil incluir enlaces para llevar a los usuarios de vuelta a páginas relevantes, como la página de inicio o una página de contacto.
+
