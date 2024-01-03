@@ -1,38 +1,39 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13208918)
-## Next.js Master Class
-This repo contains all the course files for the Next.js Master Class on Net Ninja Pro. There is a branch for every lesson. Select the lesson you need from the branch dropdown.
 
-Visit [Net Ninja Pro](https://netninja.dev) to view this course and many more.
 
-## Getting Started with the Project
+# SSR y Server Components en Next.js 13
 
-First, run the development server:
+## Introducción
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+En este documento, exploraremos los conceptos de SSR (Server-Side Rendering) y Server Components en el contexto del framework Next.js 13, una popular herramienta para el desarrollo de aplicaciones web basadas en React.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## SSR (Server-Side Rendering)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### ¿Qué es SSR?
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+SSR se refiere a la técnica de renderizar componentes de una aplicación web en el servidor en lugar de hacerlo en el navegador del cliente. Esto significa que la página se pre-renderiza en el servidor y se envía al cliente como HTML estático.
 
-## Learn More
+### Ventajas del SSR en Next.js 13
 
-To learn more about Next.js, take a look at the following resources:
+- **Mejora del SEO**: Al servir páginas completamente renderizadas, los motores de búsqueda pueden indexar el contenido de manera más efectiva.
+- **Carga rápida de la primera página**: Los usuarios ven contenido significativo más rápido, ya que el HTML ya está renderizado.
+- **Rendimiento del servidor optimizado**: Al realizar tareas pesadas en el servidor, se reduce la carga en el cliente.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Implementación en Next.js 13
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Next.js ofrece una implementación sencilla de SSR, donde puedes definir páginas con SSR simplemente exportando una función `getServerSideProps` en tus componentes.
 
-## Deploy on Vercel
+## Server Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ¿Qué son los Server Components?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Los Server Components son una nueva adición en React y Next.js, que permiten escribir componentes que se renderizan únicamente en el servidor. Estos componentes pueden interactuar con el backend sin exponer lógica o datos sensibles al cliente.
+
+### Ventajas de los Server Components
+
+- **Menor carga en el cliente**: Al mover la lógica de ciertos componentes al servidor, se reduce el tamaño del bundle enviado al navegador.
+- **Acceso directo al backend**: Pueden interactuar directamente con bases de datos u otros servicios del servidor, sin pasar por APIs expuestas al cliente.
+
+### Uso en Next.js 13
+
+Para utilizar Server Components en Next.js 13, debes seguir las convenciones del framework, como nombrar tus archivos de componentes de servidor con una extensión específica (por ejemplo, `.server.js`) y asegurarte de que estos componentes solo se usen en el lado del servidor.
+
